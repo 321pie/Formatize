@@ -1,12 +1,12 @@
 ﻿namespace formAtize.Backend
 {
-    public class Document : DocumentElement
+    public class Document
     {
         private string m_name;
         private bool m_isDirty = true;
         private string m_description = "";
-
         private List<Page> m_pages = new List<Page>();
+        private List<Block> m_blocks = new List<Block>();
 
         public Document(string name) 
         {
@@ -37,10 +37,34 @@
 
         public bool isEmpty()
         {
-            if (m_pages.RemoveAll(page => page.isEmpty() == true) > 0)
-                m_isDirty = true;
-
             return m_pages.Count == 0;
+        }
+
+        public bool RemovePage(int number)
+        {
+            return true;
+        }
+
+        public string GetText()
+        {
+            return "";
+        }
+
+        public int Clean()
+        {
+            int count = m_pages.RemoveAll(page => page.isEmpty() == true);
+
+            if(count > 0)
+            {
+                m_isDirty = true;
+            }
+
+            return count;
+        }
+
+        public int WordCount(bool limitedMode, List<string> types = null)
+        {
+            return 0;
         }
     }
 }
