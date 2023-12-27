@@ -1,5 +1,6 @@
 namespace formAtize.Backend
 {
+    using EasyDriveFilesManager;
     public class Database
     {
         private string m_localConnection = "";
